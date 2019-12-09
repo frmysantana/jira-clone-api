@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.4
+
+before_script:
+  -composer install --no-interaction
+
+script:
+  - php artisan key:generate
+  - vendor/bin/phpunit
+
+cache:
+  directories:
+    -vendor
