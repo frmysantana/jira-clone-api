@@ -20,4 +20,9 @@ class User extends Model
     // ];
 
     public $timestamps = false;
+
+    public function orgs()
+    {
+        return $this->belongsToMany(Orgs::class, 'orgs_user', 'userUuid', 'orgUuid', 'uuid', 'uuid');
+    }
 }
