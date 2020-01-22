@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         factory(App\User::class, 50)->create();
         factory(App\Orgs::class, 10)->create();
-
+        factory(App\Projects::class, 20)->create();
+        
         $users = App\User::select('uuid')->get();
         $orgs = App\Orgs::select('uuid')->get();
         
