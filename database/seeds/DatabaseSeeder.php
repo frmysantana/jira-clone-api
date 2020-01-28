@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         
         $users = App\User::select('uuid')->get();
         $orgs = App\Orgs::select('uuid')->get();
-        
+
         $i = 0;
 
         foreach($users as $user)
@@ -33,6 +33,26 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $i = ($i === 9) ? 0 : $i + 1; 
+        }
+
+        $projects = App\Projects::select('uuid', 'orgUuid')->get();
+
+        foreach($projects as $project)
+        {
+            $orgUuid = $project->orgUuid;
+            $orgIndex = $orgs->search(function ($item, $key) use ($orgUuid) {
+                return $item['uuid'] === $orgUuid;
+            });
+            $users = $orgs[$orgIndex]->users;
+            $maxParticipants = $users->count();
+            $max = rand(1, $maxParticipants);
+
+            for ($i = 0; $i < $max; $i++) {
+                DB::table('project_User')->insert([
+                    'projectUuid' => $project->uuid,
+                    'userUuid' => $users[$i]->uuid
+                ]);
+            }
         }
     }
 }

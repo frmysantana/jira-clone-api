@@ -25,4 +25,9 @@ class User extends Model
     {
         return $this->belongsToMany(Orgs::class, 'orgs_user', 'userUuid', 'orgUuid', 'uuid', 'uuid');
     }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Projects::class, 'project_User', 'userUuid', 'projectUuid', 'uuid', 'uuid');
+    }
 }
