@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             OrgsUserTableSeeder::class,
             ProjectsTableSeeder::class,
             ProjectUserTableSeeder::class,
+            ProjectKeysTableSeeder::class,
+            ColumnsTableSeeder::class,
         ]);
     }
 }
