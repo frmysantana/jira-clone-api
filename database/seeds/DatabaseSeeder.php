@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ProjectUserTableSeeder::class,
             ProjectKeysTableSeeder::class,
             ColumnsTableSeeder::class,
+            TasksTableSeeder::class
         ]);
     }
 }
