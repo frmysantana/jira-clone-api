@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers;
 use Illuminate\Http\Request;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/user/login', function (Request $request) {
+    // perform google sign-in Oauth - Passport (probably MiddleWare)
+    // if info valid - return user json data
+    // else - return json error and message
+
+    // return 
 });
