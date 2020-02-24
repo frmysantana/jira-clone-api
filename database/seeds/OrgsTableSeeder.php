@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Orgs;
+use App\Org;
 
 class OrgsTableSeeder extends Seeder
 {
@@ -12,6 +12,6 @@ class OrgsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Orgs::class, 10)->create();
+        factory(Org::class, 10)->create();
     }
 }

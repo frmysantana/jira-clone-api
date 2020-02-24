@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\{User, Orgs};
+use App\{User, Org};
 
 class OrgsUserTableSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class OrgsUserTableSeeder extends Seeder
     public function run()
     {
         $users = User::select('uuid')->get();
-        $orgs = Orgs::select('uuid')->get();
+        $orgs = Org::select('uuid')->get();
 
         $i = 0;
 

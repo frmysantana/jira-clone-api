@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Projects;
+use App\Project;
 
 class ColumnsTableSeeder extends Seeder
 {
@@ -12,10 +12,8 @@ class ColumnsTableSeeder extends Seeder
      */
     public function run()
     {
-        $projects = Projects::select('uuid')->get();
+        $projects = Project::select('uuid')->get();
 
-        // each project starts with a standard 'TO DO' (first), 'IN PROGRESS' (second), AND 'DONE' (third)
-        // need name, projectUuid, uiSequence
         $projects->map(function($project) {
             DB::table('columns')->insert([
                 'projectUuid' => $project->uuid,

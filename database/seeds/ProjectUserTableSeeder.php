@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\{ Orgs, Projects };
+use App\{ Org, Project };
 
 class ProjectUserTableSeeder extends Seeder
 {
@@ -10,16 +10,16 @@ class ProjectUserTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run() : void
     {
-        $projects = Projects::select('uuid', 'orgUuid')->get();
+        $projects = Project::select('uuid', 'orgUuid')->get();
 
-        $orgs = Orgs::select('uuid')->get();
+        $orgs = Org::select('uuid')->get();
         
         foreach($projects as $project)
         {
             $orgUuid = $project->orgUuid;
-            $orgIndex = $orgs->search(fn (Orgs $item) : bool => $item['uuid'] === $orgUuid);
+            $orgIndex = $orgs->search(fn (Org $item) : bool => $item['uuid'] === $orgUuid);
             $users = $orgs[$orgIndex]->users;
             $maxParticipants = $users->count();
             $max = rand(1, $maxParticipants);

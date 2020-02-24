@@ -2,11 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Orgs;
+use App\{ User, Org };
 use Faker\Generator as Faker;
-use App\User;
 
-$factory->define(Orgs::class, function (Faker $faker) {
+$factory->define(Org::class, function (Faker $faker) {
     return [
         'name' => $faker->company(),
         'ownerUuid' => User::orderByRaw("RAND()")->first()->uuid

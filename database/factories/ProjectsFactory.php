@@ -2,13 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Projects;
-use App\Orgs;
+use App\{ Project, Org };
 use Faker\Generator as Faker;
 
-$factory->define(Projects::class, function (Faker $faker) {
+$factory->define(Project::class, function (Faker $faker) {
     return [
-        'orgUuid' => Orgs::orderByRaw("RAND()")->first()->uuid,
+        'orgUuid' => Org::orderByRaw("RAND()")->first()->uuid,
         'name' => $faker->words(rand(1, 5), true),
         'icon' => $faker->imageUrl()
     ];

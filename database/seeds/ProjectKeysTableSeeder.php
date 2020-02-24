@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Projects;
+use App\Project;
 
 class ProjectKeysTableSeeder extends Seeder
 {
@@ -12,7 +12,7 @@ class ProjectKeysTableSeeder extends Seeder
      */
     public function run()
     {
-        $projects = Projects::select('uuid', 'name', 'orgUuid')->get();
+        $projects = Project::select('uuid', 'name', 'orgUuid')->get();
 
         // projects is a collection
         $projects->map( function ($project) {
